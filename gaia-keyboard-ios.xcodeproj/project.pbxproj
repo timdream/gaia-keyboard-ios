@@ -15,6 +15,7 @@
 		DA58FDEE1A2F5C2E00A22465 /* gaia_keyboard_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FDED1A2F5C2E00A22465 /* gaia_keyboard_iosTests.swift */; };
 		DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */; };
 		DA58FE031A2F5CA000A22465 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA58FDFB1A2F5CA000A22465 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA58FE091A2F7C0900A22465 /* webapp in Resources */ = {isa = PBXBuildFile; fileRef = DA58FE081A2F7C0900A22465 /* webapp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		DA58FDFB1A2F5CA000A22465 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58FDFE1A2F5CA000A22465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		DA58FE081A2F7C0900A22465 /* webapp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = webapp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		DA58FDFC1A2F5CA000A22465 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				DA58FE081A2F7C0900A22465 /* webapp */,
 				DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */,
 				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
 			);
@@ -284,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA58FE091A2F7C0900A22465 /* webapp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
