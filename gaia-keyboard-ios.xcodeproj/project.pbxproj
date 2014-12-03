@@ -13,6 +13,8 @@
 		DA58FDDF1A2F5C2E00A22465 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA58FDDE1A2F5C2E00A22465 /* Images.xcassets */; };
 		DA58FDE21A2F5C2E00A22465 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA58FDE01A2F5C2E00A22465 /* LaunchScreen.xib */; };
 		DA58FDEE1A2F5C2E00A22465 /* gaia_keyboard_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FDED1A2F5C2E00A22465 /* gaia_keyboard_iosTests.swift */; };
+		DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */; };
+		DA58FE031A2F5CA000A22465 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA58FDFB1A2F5CA000A22465 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +25,28 @@
 			remoteGlobalIDString = DA58FDD11A2F5C2D00A22465;
 			remoteInfo = "gaia-keyboard-ios";
 		};
+		DA58FE011A2F5CA000A22465 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA58FDCA1A2F5C2D00A22465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA58FDFA1A2F5CA000A22465;
+			remoteInfo = keyboard;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA58FE071A2F5CA100A22465 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA58FE031A2F5CA000A22465 /* keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA58FDD21A2F5C2D00A22465 /* gaia-keyboard-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gaia-keyboard-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +59,9 @@
 		DA58FDE71A2F5C2E00A22465 /* gaia-keyboard-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gaia-keyboard-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58FDEC1A2F5C2E00A22465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA58FDED1A2F5C2E00A22465 /* gaia_keyboard_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gaia_keyboard_iosTests.swift; sourceTree = "<group>"; };
+		DA58FDFB1A2F5CA000A22465 /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA58FDFE1A2F5CA000A22465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +79,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA58FDF81A2F5CA000A22465 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +94,7 @@
 			children = (
 				DA58FDD41A2F5C2D00A22465 /* gaia-keyboard-ios */,
 				DA58FDEA1A2F5C2E00A22465 /* gaia-keyboard-iosTests */,
+				DA58FDFC1A2F5CA000A22465 /* keyboard */,
 				DA58FDD31A2F5C2D00A22465 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +104,7 @@
 			children = (
 				DA58FDD21A2F5C2D00A22465 /* gaia-keyboard-ios.app */,
 				DA58FDE71A2F5C2E00A22465 /* gaia-keyboard-iosTests.xctest */,
+				DA58FDFB1A2F5CA000A22465 /* keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +147,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DA58FDFC1A2F5CA000A22465 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */,
+				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
+			);
+			path = keyboard;
+			sourceTree = "<group>";
+		};
+		DA58FDFD1A2F5CA000A22465 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA58FDFE1A2F5CA000A22465 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +174,12 @@
 				DA58FDCE1A2F5C2D00A22465 /* Sources */,
 				DA58FDCF1A2F5C2D00A22465 /* Frameworks */,
 				DA58FDD01A2F5C2D00A22465 /* Resources */,
+				DA58FE071A2F5CA100A22465 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA58FE021A2F5CA000A22465 /* PBXTargetDependency */,
 			);
 			name = "gaia-keyboard-ios";
 			productName = "gaia-keyboard-ios";
@@ -150,6 +204,23 @@
 			productReference = DA58FDE71A2F5C2E00A22465 /* gaia-keyboard-iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DA58FDFA1A2F5CA000A22465 /* keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA58FE041A2F5CA100A22465 /* Build configuration list for PBXNativeTarget "keyboard" */;
+			buildPhases = (
+				DA58FDF71A2F5CA000A22465 /* Sources */,
+				DA58FDF81A2F5CA000A22465 /* Frameworks */,
+				DA58FDF91A2F5CA000A22465 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = keyboard;
+			productName = keyboard;
+			productReference = DA58FDFB1A2F5CA000A22465 /* keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +236,9 @@
 					DA58FDE61A2F5C2E00A22465 = {
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = DA58FDD11A2F5C2D00A22465;
+					};
+					DA58FDFA1A2F5CA000A22465 = {
+						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
@@ -183,6 +257,7 @@
 			targets = (
 				DA58FDD11A2F5C2D00A22465 /* gaia-keyboard-ios */,
 				DA58FDE61A2F5C2E00A22465 /* gaia-keyboard-iosTests */,
+				DA58FDFA1A2F5CA000A22465 /* keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -199,6 +274,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DA58FDE51A2F5C2E00A22465 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA58FDF91A2F5CA000A22465 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +307,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA58FDF71A2F5CA000A22465 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +322,11 @@
 			isa = PBXTargetDependency;
 			target = DA58FDD11A2F5C2D00A22465 /* gaia-keyboard-ios */;
 			targetProxy = DA58FDE81A2F5C2E00A22465 /* PBXContainerItemProxy */;
+		};
+		DA58FE021A2F5CA000A22465 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA58FDFA1A2F5CA000A22465 /* keyboard */;
+			targetProxy = DA58FE011A2F5CA000A22465 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -338,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "gaia-keyboard-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "gaia-keyboard-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,6 +485,30 @@
 			};
 			name = Release;
 		};
+		DA58FE051A2F5CA100A22465 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DA58FE061A2F5CA100A22465 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = keyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,6 +534,14 @@
 			buildConfigurations = (
 				DA58FDF51A2F5C2E00A22465 /* Debug */,
 				DA58FDF61A2F5C2E00A22465 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DA58FE041A2F5CA100A22465 /* Build configuration list for PBXNativeTarget "keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA58FE051A2F5CA100A22465 /* Debug */,
+				DA58FE061A2F5CA100A22465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
