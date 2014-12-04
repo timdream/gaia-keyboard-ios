@@ -21,6 +21,7 @@ class KeyboardViewController: UIInputViewController {
     override func loadView() {
         self.keyboardAppView = KeyboardWebAppView()
         self.view = self.keyboardAppView!
+        self.keyboardAppView!.kbDelegate = self
     }
 
     override func viewDidLoad() {

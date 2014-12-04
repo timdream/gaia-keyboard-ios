@@ -13,6 +13,8 @@ class KeyboardWebAppView : UIView {
     var webView: WKWebView?
     var height: CGFloat = 0
 
+    var kbDelegate: KeyboardViewController!
+
     override init() {
         super.init();
         self.createWebView();
