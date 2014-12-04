@@ -16,6 +16,7 @@
 		DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */; };
 		DA58FE031A2F5CA000A22465 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA58FDFB1A2F5CA000A22465 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA58FE091A2F7C0900A22465 /* webapp in Resources */ = {isa = PBXBuildFile; fileRef = DA58FE081A2F7C0900A22465 /* webapp */; };
+		DA58FE111A309C5000A22465 /* KeyboardWebAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		DA58FDFE1A2F5CA000A22465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		DA58FE081A2F7C0900A22465 /* webapp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = webapp; sourceTree = "<group>"; };
+		DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		DA58FDFC1A2F5CA000A22465 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */,
 				DA58FE081A2F7C0900A22465 /* webapp */,
 				DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */,
 				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA58FE111A309C5000A22465 /* KeyboardWebAppView.swift in Sources */,
 				DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +536,7 @@
 				DA58FDF31A2F5C2E00A22465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA58FDF41A2F5C2E00A22465 /* Build configuration list for PBXNativeTarget "gaia-keyboard-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +545,7 @@
 				DA58FDF61A2F5C2E00A22465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA58FE041A2F5CA100A22465 /* Build configuration list for PBXNativeTarget "keyboard" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +554,7 @@
 				DA58FE061A2F5CA100A22465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

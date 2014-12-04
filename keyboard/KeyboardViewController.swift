@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class KeyboardViewController: UIInputViewController {
-    var webView: WKWebView?
+    var keyboardAppView: KeyboardWebAppView?
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -19,20 +19,14 @@ class KeyboardViewController: UIInputViewController {
     }
 
     override func loadView() {
-        // Load the WKWebView as the main view.
-        self.webView = WKWebView()
-        self.view = self.webView!
+        self.keyboardAppView = KeyboardWebAppView()
+        self.view = self.keyboardAppView!
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let bundle = NSBundle.mainBundle();
-        let path = bundle.pathForResource("index", ofType: "html", inDirectory: "webapp" );
-        let url = NSURL(fileURLWithPath: path!);
-        
-        let req = NSURLRequest(URL: url!)
-        self.webView!.loadRequest(req)
+        self.keyboardAppView!.load()
     }
 
     override func didReceiveMemoryWarning() {
