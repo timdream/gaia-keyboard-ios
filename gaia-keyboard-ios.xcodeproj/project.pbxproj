@@ -154,9 +154,9 @@
 		DA58FDFC1A2F5CA000A22465 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */,
 				DA58FE081A2F7C0900A22465 /* webapp */,
 				DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */,
+				DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */,
 				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
 			);
 			path = keyboard;
