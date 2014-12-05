@@ -11,7 +11,7 @@ import WebKit
 
 class KeyboardWebAppView : UIView {
     var webView: WKWebView?
-    var height: CGFloat = 0
+    var expendedHeight: CGFloat = 0
 
     var kbDelegate: KeyboardViewController!
 
@@ -32,8 +32,9 @@ class KeyboardWebAppView : UIView {
 
     private func createWebView() {
         let screenSize = UIScreen.mainScreen().bounds.size;
-        self.height = screenSize.height / 2;
-        let rect = CGRect(x: 0, y: -self.height, width: screenSize.width, height: screenSize.height)
+
+        let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
+                            width: screenSize.width, height: screenSize.height)
         self.webView = WKWebView(frame: rect)
 
         self.addSubview(self.webView!)

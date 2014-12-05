@@ -12,10 +12,14 @@ import WebKit
 class KeyboardViewController: UIInputViewController {
     var keyboardAppView: KeyboardWebAppView?
 
+    var heightConstraint: NSLayoutConstraint!
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
-    
-        // Add custom view sizing constraints here
+
+        self.view.removeConstraint(self.heightConstraint)
+        self.heightConstraint.constant = self.keyboardAppView!.expendedHeight
+        self.view.addConstraint(self.heightConstraint)
     }
 
     override func loadView() {
@@ -28,6 +32,21 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         self.keyboardAppView!.load()
+
+        self.heightConstraint =
+            NSLayoutConstraint(item: self.view,
+                attribute: NSLayoutAttribute.Height,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.NotAnAttribute,
+                multiplier:0.0,
+                constant: self.keyboardAppView!.expendedHeight)
+
+        // We need to bump the pirority of our constraint here.
+        // See http://stackoverflow.com/a/25795758/519617
+        self.heightConstraint.priority = 999;
+
+        self.view.addConstraint(self.heightConstraint);
     }
 
     override func didReceiveMemoryWarning() {
