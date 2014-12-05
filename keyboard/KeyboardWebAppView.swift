@@ -14,6 +14,7 @@ class KeyboardWebAppView : UIView {
     var expendedHeight: CGFloat = 0
 
     var kbDelegate: KeyboardViewController!
+    var apiController: KeyboardWebAppAPIController!
 
     override init() {
         super.init();
@@ -35,12 +36,18 @@ class KeyboardWebAppView : UIView {
 
         let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
                             width: screenSize.width, height: screenSize.height)
-        self.webView = WKWebView(frame: rect)
+
+        self.apiController = KeyboardWebAppAPIController()
+        let configuration = self.apiController.configuration
+        self.webView = WKWebView(frame: rect, configuration: configuration);
 
         self.addSubview(self.webView!)
     }
 
     func load() {
+        self.apiController.appViewDelegate = self
+        self.apiController.kbDelegate = self.kbDelegate
+
         let bundle = NSBundle.mainBundle();
         let path = bundle.pathForResource("index", ofType: "html", inDirectory: "webapp" );
         let url = NSURL(fileURLWithPath: path!);

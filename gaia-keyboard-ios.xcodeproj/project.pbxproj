@@ -17,6 +17,8 @@
 		DA58FE031A2F5CA000A22465 /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA58FDFB1A2F5CA000A22465 /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA58FE091A2F7C0900A22465 /* webapp in Resources */ = {isa = PBXBuildFile; fileRef = DA58FE081A2F7C0900A22465 /* webapp */; };
 		DA58FE111A309C5000A22465 /* KeyboardWebAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */; };
+		DA58FE151A31830600A22465 /* api in Resources */ = {isa = PBXBuildFile; fileRef = DA58FE141A31830600A22465 /* api */; };
+		DA58FE171A318F4300A22465 /* KeyboardWebAppAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		DA58FE081A2F7C0900A22465 /* webapp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = webapp; sourceTree = "<group>"; };
 		DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppView.swift; sourceTree = "<group>"; };
+		DA58FE141A31830600A22465 /* api */ = {isa = PBXFileReference; lastKnownFileType = folder; path = api; sourceTree = "<group>"; };
+		DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppAPIController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +158,10 @@
 		DA58FDFC1A2F5CA000A22465 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				DA58FE141A31830600A22465 /* api */,
 				DA58FE081A2F7C0900A22465 /* webapp */,
 				DA58FDFF1A2F5CA000A22465 /* KeyboardViewController.swift */,
+				DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */,
 				DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */,
 				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
 			);
@@ -291,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA58FE091A2F7C0900A22465 /* webapp in Resources */,
+				DA58FE151A31830600A22465 /* api in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA58FE111A309C5000A22465 /* KeyboardWebAppView.swift in Sources */,
+				DA58FE171A318F4300A22465 /* KeyboardWebAppAPIController.swift in Sources */,
 				DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
