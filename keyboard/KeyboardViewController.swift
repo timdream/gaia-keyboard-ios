@@ -10,8 +10,9 @@ import UIKit
 import WebKit
 
 class KeyboardViewController: UIInputViewController {
-    var keyboardAppView: KeyboardWebAppView?
+    var keyboardAppView: KeyboardWebAppView!
 
+    var isManagingFocus: Bool = false
     var heightConstraint: NSLayoutConstraint!
 
     override func updateViewConstraints() {
@@ -59,7 +60,24 @@ class KeyboardViewController: UIInputViewController {
     }
 
     override func textDidChange(textInput: UITextInput) {
-        // The app has just changed the document's contents, the document context has been updated.
+        if !self.isManagingFocus {
+            return;
+        }
+
+        self.keyboardAppView.updateTextInput();
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+
+        self.keyboardAppView.getFocus();
+        self.isManagingFocus = true;
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated);
+
+        self.keyboardAppView.removeFocus();
+        self.isManagingFocus = false;
+    }
 }

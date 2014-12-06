@@ -31,8 +31,9 @@
     this.mgmt = new InputMethodManager();
     this.mgmt.start();
 
-    this.inputcontext = new InputContext();
-    this.inputcontext.start();
+    // No inputcontext when the app starts
+    // this.inputcontext = new InputContext();
+    // this.inputcontext.start();
 
     window.addEventListener('message', this);
   };
@@ -311,7 +312,7 @@
   };
 
   InputMethodManager.prototype._sendMessage = function(method) {
-    window.parent.postMessage({
+    window.webkit.messageHandlers.api.postMessage({
       api: 'inputmethodmanager',
       method: method
     } , '*');

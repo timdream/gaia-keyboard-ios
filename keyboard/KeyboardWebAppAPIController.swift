@@ -15,6 +15,7 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
     var kbDelegate: KeyboardViewController!
 
     var settingsHandler: KeyboardWebAppSettingsHandler!
+    var inputMethodHandler: KeyboardWebAppInputMethodHandler!
 
     override init() {
         super.init()
@@ -22,6 +23,9 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
 
         self.settingsHandler = KeyboardWebAppSettingsHandler();
         self.settingsHandler.apiControllerDelegate = self
+
+        self.inputMethodHandler = KeyboardWebAppInputMethodHandler();
+        self.inputMethodHandler.apiControllerDelegate = self
     }
 
     private func createWebViewConfiguration() -> WKWebViewConfiguration {
@@ -57,15 +61,17 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message:WKScriptMessage) {
         let data : NSDictionary = message.body as NSDictionary;
         let api = data["api"] as String;
+        println(api)
         switch api {
             case "settings":
                 self.settingsHandler.handleMessage(data);
 
             case "inputmethod", "inputcontext", "inputmethodmanager":
-                println("TODO");
+                self.inputMethodHandler.handleMessage(data);
 
             case "resizeTo":
-                println("TODO");
+                self.appViewDelegate.expendedHeight = (data["args"] as NSArray)[1] as CGFloat;
+                self.appViewDelegate.updateConstraints();
 
             default:
                 fatalError("KeyboardWebAppAPIController: Undefined message from api: \(api)");
@@ -76,8 +82,9 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
         let jsonString = NSString(
             data: NSJSONSerialization.dataWithJSONObject(obj, options: nil, error: nil)!,
             encoding: NSUTF8StringEncoding) as String;
+
         self.appViewDelegate.webView?.evaluateJavaScript(
-            "window.postMessage(\(jsonString) ,'*')",
+            "window.postMessage(\(jsonString) ,'*');",
             completionHandler: nil);
     }
 }

@@ -55,4 +55,16 @@ class KeyboardWebAppView : UIView {
         let req = NSURLRequest(URL: url!)
         self.webView!.loadRequest(req)
     }
+
+    func getFocus() {
+        self.apiController.inputMethodHandler.getFocus();
+    }
+
+    func removeFocus() {
+        self.apiController.inputMethodHandler.removeFocus();
+    }
+
+    func updateTextInput() {
+        self.apiController.inputMethodHandler.updateSelectionContext(ownAction: false);
+    }
 }

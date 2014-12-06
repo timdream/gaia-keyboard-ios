@@ -20,6 +20,7 @@
 		DA58FE151A31830600A22465 /* api in Resources */ = {isa = PBXBuildFile; fileRef = DA58FE141A31830600A22465 /* api */; };
 		DA58FE171A318F4300A22465 /* KeyboardWebAppAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */; };
 		DA58FE1B1A321CE900A22465 /* KeyboardWebAppSettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE1A1A321CE900A22465 /* KeyboardWebAppSettingsHandler.swift */; };
+		DA58FE1D1A324CA400A22465 /* KeyboardWebAppInputMethodHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58FE1C1A324CA400A22465 /* KeyboardWebAppInputMethodHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		DA58FE141A31830600A22465 /* api */ = {isa = PBXFileReference; lastKnownFileType = folder; path = api; sourceTree = "<group>"; };
 		DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppAPIController.swift; sourceTree = "<group>"; };
 		DA58FE1A1A321CE900A22465 /* KeyboardWebAppSettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppSettingsHandler.swift; sourceTree = "<group>"; };
+		DA58FE1C1A324CA400A22465 /* KeyboardWebAppInputMethodHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardWebAppInputMethodHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				DA58FE161A318F4300A22465 /* KeyboardWebAppAPIController.swift */,
 				DA58FE101A309C5000A22465 /* KeyboardWebAppView.swift */,
 				DA58FE1A1A321CE900A22465 /* KeyboardWebAppSettingsHandler.swift */,
+				DA58FE1C1A324CA400A22465 /* KeyboardWebAppInputMethodHandler.swift */,
 				DA58FDFD1A2F5CA000A22465 /* Supporting Files */,
 			);
 			path = keyboard;
@@ -331,6 +334,7 @@
 				DA58FE111A309C5000A22465 /* KeyboardWebAppView.swift in Sources */,
 				DA58FE1B1A321CE900A22465 /* KeyboardWebAppSettingsHandler.swift in Sources */,
 				DA58FE171A318F4300A22465 /* KeyboardWebAppAPIController.swift in Sources */,
+				DA58FE1D1A324CA400A22465 /* KeyboardWebAppInputMethodHandler.swift in Sources */,
 				DA58FE001A2F5CA000A22465 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
