@@ -10,8 +10,8 @@ import UIKit
 import WebKit
 
 class KeyboardWebAppView : UIView {
-    var webView: WKWebView?
-    var expendedHeight: CGFloat = 0
+    var webView: WKWebView!
+    var expendedHeight: CGFloat = 400
 
     var kbDelegate: KeyboardViewController!
     var apiController: KeyboardWebAppAPIController!
@@ -26,7 +26,7 @@ class KeyboardWebAppView : UIView {
         self.createWebView();
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.createWebView();
     }
@@ -41,7 +41,12 @@ class KeyboardWebAppView : UIView {
         let configuration = self.apiController.configuration
         self.webView = WKWebView(frame: rect, configuration: configuration);
 
-        self.addSubview(self.webView!)
+        self.addSubview(self.webView)
+    }
+
+    override func updateConstraints() {
+//        self.webView.updateConstraints = self.expendedHeight
+        super.updateConstraints()
     }
 
     func load() {
@@ -52,8 +57,8 @@ class KeyboardWebAppView : UIView {
         let path = bundle.pathForResource("index", ofType: "html", inDirectory: "webapp" );
         let url = NSURL(fileURLWithPath: path!);
 
-        let req = NSURLRequest(URL: url!)
-        self.webView!.loadRequest(req)
+        let req = NSURLRequest(URL: url)
+        self.webView.loadRequest(req)
     }
 
     func getFocus() {
@@ -62,9 +67,11 @@ class KeyboardWebAppView : UIView {
 
     func removeFocus() {
         self.apiController.inputMethodHandler.removeFocus();
+        self.webView.removeFromSuperview();
+        self.webView = nil;
     }
 
     func updateTextInput() {
-        self.apiController.inputMethodHandler.updateSelectionContext(ownAction: false);
+        self.apiController.inputMethodHandler.updateSelectionContext(false);
     }
 }

@@ -15,6 +15,18 @@ class KeyboardViewController: UIInputViewController {
     var isManagingFocus: Bool = false
     var heightConstraint: NSLayoutConstraint!
 
+    override init() {
+        super.init()
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
@@ -25,7 +37,7 @@ class KeyboardViewController: UIInputViewController {
 
     override func loadView() {
         self.keyboardAppView = KeyboardWebAppView()
-        self.view = self.keyboardAppView!
+        self.view = self.keyboardAppView
         self.keyboardAppView!.kbDelegate = self
     }
 
@@ -52,14 +64,13 @@ class KeyboardViewController: UIInputViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated
     }
 
-    override func textWillChange(textInput: UITextInput) {
+    override func textWillChange(textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
     }
 
-    override func textDidChange(textInput: UITextInput) {
+    override func textDidChange(textInput: UITextInput?) {
         if !self.isManagingFocus {
             return;
         }
@@ -67,8 +78,8 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardAppView.updateTextInput();
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
 
         self.keyboardAppView.getFocus();
         self.isManagingFocus = true;
@@ -77,7 +88,12 @@ class KeyboardViewController: UIInputViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated);
 
-        self.keyboardAppView.removeFocus();
+        //self.keyboardAppView.removeFocus();
+        self.keyboardAppView.webView.removeFromSuperview();
         self.isManagingFocus = false;
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated);
     }
 }

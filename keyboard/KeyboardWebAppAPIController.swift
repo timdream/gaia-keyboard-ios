@@ -39,10 +39,9 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
         for scriptFilename in scriptFilenames {
             let loaderScriptPath = NSBundle.mainBundle()
                 .pathForResource(scriptFilename, ofType: "js", inDirectory: "api" );
-            let source = String(
+            let source = try? String(
                 contentsOfFile: loaderScriptPath!,
-                encoding: NSUTF8StringEncoding,
-                error: nil);
+                encoding: NSUTF8StringEncoding);
 
             let userScript = WKUserScript(
                 source: source!,
@@ -59,9 +58,8 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
     }
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message:WKScriptMessage) {
-        let data : NSDictionary = message.body as NSDictionary;
-        let api = data["api"] as String;
-        println(api)
+        let data : NSDictionary = message.body as! NSDictionary;
+        let api = data["api"] as! String;
         switch api {
             case "settings":
                 self.settingsHandler.handleMessage(data);
@@ -70,8 +68,10 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
                 self.inputMethodHandler.handleMessage(data);
 
             case "resizeTo":
-                self.appViewDelegate.expendedHeight = (data["args"] as NSArray)[1] as CGFloat;
+                let args = data["args"] as! NSArray
+                self.appViewDelegate.expendedHeight = args[1] as! CGFloat;
                 self.appViewDelegate.updateConstraints();
+                self.appViewDelegate.kbDelegate.updateViewConstraints();
 
             default:
                 fatalError("KeyboardWebAppAPIController: Undefined message from api: \(api)");
@@ -80,8 +80,10 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
 
     func postMessage(obj: AnyObject) {
         let jsonString = NSString(
-            data: NSJSONSerialization.dataWithJSONObject(obj, options: nil, error: nil)!,
+            data: NSJSONSerialization.dataWithJSONObject(obj, options: NSJSONReadingOptions()),
             encoding: NSUTF8StringEncoding) as String;
+
+        println(jsonString)
 
         self.appViewDelegate.webView?.evaluateJavaScript(
             "window.postMessage(\(jsonString) ,'*');",

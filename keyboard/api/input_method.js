@@ -32,8 +32,8 @@
     this.mgmt.start();
 
     // No inputcontext when the app starts
-    // this.inputcontext = new InputContext();
-    // this.inputcontext.start();
+    this.inputcontext = new InputContext();
+    this.inputcontext.start();
 
     window.addEventListener('message', this);
   };

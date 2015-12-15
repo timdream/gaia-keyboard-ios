@@ -1,3 +1,4 @@
+
 //
 //  KeyboardWebAppSettingsHandler.swift
 //  gaia-keyboard-ios
@@ -24,8 +25,8 @@ class KeyboardWebAppSettingsHandler {
     }
 
     func handleMessage(data: NSDictionary) {
-        let method = data["method"] as String;
-        let args = data["args"] as [AnyObject];
+        let method = data["method"] as! String;
+        let args = data["args"] as! [AnyObject];
 
         let message = NSMutableDictionary();
         message["api"] = data["api"];
@@ -35,15 +36,15 @@ class KeyboardWebAppSettingsHandler {
         switch method {
             case "get":
                 let result = NSMutableDictionary();
-                let key = args[0] as String;
+                let key = args[0] as! String;
                 result.setValue(self.settings[key], forKey: key);
                 message["result"] = result;
 
                 self.apiControllerDelegate.postMessage(message);
 
             case "set":
-                let dict = args[0] as NSDictionary;
-                for key in dict.allKeys as [String] {
+                let dict = args[0]as! NSDictionary;
+                for key in dict.allKeys as! [String] {
                     self.settings[key] = dict[key];
                 }
                 message["result"] = args[0];
@@ -51,7 +52,7 @@ class KeyboardWebAppSettingsHandler {
                 self.apiControllerDelegate.postMessage(message);
 
             case "clear":
-                let key = args[0] as String;
+                let key = args[0] as! String;
                 self.settings.removeObjectForKey(key);
                 message["result"] = args[0];
 

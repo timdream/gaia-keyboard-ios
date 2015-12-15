@@ -1,0 +1,13 @@
+<script>
+
+console.log('hi');
+
+req = navigator.mozSettings.createLock().get('first');
+req.onsuccess = function () {
+    console.log('blah');
+}
+
+console.log(navigator.mozInputMethod);
+console.log(navigator.mozInputMethod.inputcontext);
+
+</script>
