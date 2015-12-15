@@ -16,19 +16,14 @@ class KeyboardWebAppView : UIView {
     var kbDelegate: KeyboardViewController!
     var apiController: KeyboardWebAppAPIController!
 
-    override init() {
-        super.init();
-        self.createWebView();
-    }
-
     override init(frame: CGRect) {
-        super.init(frame: frame);
-        self.createWebView();
+        super.init(frame: frame)
+        self.createWebView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
-        self.createWebView();
+        super.init(coder: aDecoder)
+        self.createWebView()
     }
 
     private func createWebView() {

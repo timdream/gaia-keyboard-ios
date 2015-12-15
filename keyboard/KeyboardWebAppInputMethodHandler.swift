@@ -89,15 +89,15 @@ class KeyboardWebAppInputMethodHandler {
         case "getText":
             let textDocumentProxy : UITextDocumentProxy =
                 self.apiControllerDelegate.kbDelegate.textDocumentProxy as UITextDocumentProxy;
-            let text = (textDocumentProxy.documentContextBeforeInput +
-                textDocumentProxy.documentContextAfterInput) as NSString;
+            let text = (textDocumentProxy.documentContextBeforeInput! +
+                textDocumentProxy.documentContextAfterInput!) as NSString;
             var result: String;
 
             // XXX We are handling USC-16 indexes passed from JavaScript as Unicode string indexes here.
             if args.count >= 2 {
-                result = text.substringWithRange(NSRange(location: args[0] as Int, length: args[1] as Int));
+                result = text.substringWithRange(NSRange(location: args[0] as! Int, length: args[1] as! Int));
             } else if args.count == 1 {
-                result = text.substringFromIndex(args[0] as Int);
+                result = text.substringFromIndex(args[0] as! Int);
             } else {
                 result = text as String;
             }
@@ -243,7 +243,7 @@ class KeyboardWebAppInputMethodHandler {
             textAfterCursor = "";
         }
 
-        let charPosition = (textBeforeCursor as NSString).length;
+        let charPosition = (textBeforeCursor! as NSString).length;
 
         print(textBeforeCursor);
         print(textAfterCursor);

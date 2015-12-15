@@ -15,18 +15,6 @@ class KeyboardViewController: UIInputViewController {
     var isManagingFocus: Bool = false
     var heightConstraint: NSLayoutConstraint!
 
-    override init() {
-        super.init()
-    }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
     override func updateViewConstraints() {
         super.updateViewConstraints()
 

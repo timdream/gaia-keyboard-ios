@@ -79,15 +79,19 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
     }
 
     func postMessage(obj: AnyObject) {
-        let jsonString = NSString(
-            data: NSJSONSerialization.dataWithJSONObject(obj, options: NSJSONReadingOptions()),
-            encoding: NSUTF8StringEncoding) as String;
+        do {
+            let jsonString = NSString(
+                data: try NSJSONSerialization.dataWithJSONObject(obj, options: NSJSONWritingOptions(rawValue: 0)),
+                encoding: NSUTF8StringEncoding) as! String;
 
-        println(jsonString)
+            print(jsonString)
 
-        self.appViewDelegate.webView?.evaluateJavaScript(
-            "window.postMessage(\(jsonString) ,'*');",
-            completionHandler: nil);
+            self.appViewDelegate.webView?.evaluateJavaScript(
+                "window.postMessage(\(jsonString) ,'*');",
+                completionHandler: nil);
+        } catch _ as NSError {
+            fatalError("KeyboardWebAppAPIController: Error parsing data.");
+        }
     }
 }
 
