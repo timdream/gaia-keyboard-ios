@@ -9,15 +9,15 @@
 import UIKit
 import WebKit
 
-class KeyboardWebAppView : UIView {
+class KeyboardWebAppView : UIInputView {
     var webView: WKWebView!
     var expendedHeight: CGFloat = 400
 
     var kbDelegate: KeyboardViewController!
     var apiController: KeyboardWebAppAPIController!
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
+        super.init(frame: frame, inputViewStyle: inputViewStyle)
         self.createWebView()
     }
 
@@ -27,6 +27,10 @@ class KeyboardWebAppView : UIView {
     }
 
     private func createWebView() {
+        if #available(iOSApplicationExtension 9.0, *) {
+            self.allowsSelfSizing = true
+        }
+
         let screenSize = UIScreen.mainScreen().bounds.size;
 
         let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,

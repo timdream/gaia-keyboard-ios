@@ -18,15 +18,15 @@ class KeyboardViewController: UIInputViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
-        self.view.removeConstraint(self.heightConstraint)
+        self.inputView!.removeConstraint(self.heightConstraint)
         self.heightConstraint.constant = self.keyboardAppView!.expendedHeight
-        self.view.addConstraint(self.heightConstraint)
+        self.inputView!.addConstraint(self.heightConstraint)
     }
 
     override func loadView() {
         self.keyboardAppView = KeyboardWebAppView()
-        self.view = self.keyboardAppView
         self.keyboardAppView!.kbDelegate = self
+        self.inputView = self.keyboardAppView
     }
 
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class KeyboardViewController: UIInputViewController {
         // See http://stackoverflow.com/a/25795758/519617
         self.heightConstraint.priority = 999;
 
-        self.view.addConstraint(self.heightConstraint);
+        self.inputView!.addConstraint(self.heightConstraint);
     }
 
     override func didReceiveMemoryWarning() {
