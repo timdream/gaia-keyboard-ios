@@ -15,4 +15,11 @@ req.onsuccess = function () {
 console.log(navigator.mozInputMethod);
 console.log(navigator.mozInputMethod.inputcontext);
 
+if (navigator.mozInputMethod.inputcontext) {
+    navigator.mozInputMethod.inputcontext.sendKey(0, 61);
+    navigator.mozInputMethod.inputcontext.sendKey(0, 62);
+    navigator.mozInputMethod.inputcontext.sendKey(0, 63);
+}
+
+
 </script>

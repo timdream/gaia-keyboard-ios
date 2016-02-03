@@ -38,14 +38,16 @@ class KeyboardWebAppView : UIInputView {
 
         self.apiController = KeyboardWebAppAPIController()
         let configuration = self.apiController.configuration
-        self.webView = WKWebView(frame: rect, configuration: configuration);
 
+        self.webView = WKWebView(frame: rect, configuration: configuration);
         self.addSubview(self.webView)
     }
 
-    override func updateConstraints() {
-//        self.webView.updateConstraints = self.expendedHeight
-        super.updateConstraints()
+    private func destroyWebView() {
+        self.webView.removeFromSuperview();
+        self.webView = nil;
+
+        self.apiController = nil
     }
 
     func load() {
@@ -60,17 +62,26 @@ class KeyboardWebAppView : UIInputView {
         self.webView.loadRequest(req)
     }
 
+    func unload() {
+        self.apiController.kbDelegate = nil
+        self.apiController.appViewDelegate = nil
+
+        self.destroyWebView()
+    }
+
     func getFocus() {
         self.apiController.inputMethodHandler.getFocus();
     }
 
     func removeFocus() {
         self.apiController.inputMethodHandler.removeFocus();
-        self.webView.removeFromSuperview();
-        self.webView = nil;
     }
 
     func updateTextInput() {
         self.apiController.inputMethodHandler.updateSelectionContext(false);
+    }
+
+    override func updateConstraints() {
+        super.updateConstraints()
     }
 }

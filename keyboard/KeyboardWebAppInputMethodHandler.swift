@@ -231,28 +231,25 @@ class KeyboardWebAppInputMethodHandler {
 
     private func getSelectionInfo() -> NSDictionary {
         let textDocumentProxy : UITextDocumentProxy =
-            self.apiControllerDelegate.kbDelegate.textDocumentProxy as UITextDocumentProxy;
+            self.apiControllerDelegate.kbDelegate.textDocumentProxy as UITextDocumentProxy
 
-        var textBeforeCursor = textDocumentProxy.documentContextBeforeInput;
+        var textBeforeCursor = textDocumentProxy.documentContextBeforeInput
         if (textBeforeCursor == nil) {
-            textBeforeCursor = "";
+            textBeforeCursor = ""
         }
 
-        var textAfterCursor = textDocumentProxy.documentContextAfterInput;
+        var textAfterCursor = textDocumentProxy.documentContextAfterInput
         if (textAfterCursor == nil) {
-            textAfterCursor = "";
+            textAfterCursor = ""
         }
 
-        let charPosition = (textBeforeCursor! as NSString).length;
+        let charPosition = (textBeforeCursor! as NSString).length
 
-        print(textBeforeCursor);
-        print(textAfterCursor);
-
-        let info = NSMutableDictionary();
-        info["selectionStart"] = charPosition;
-        info["selectionEnd"] = charPosition; // XXX: No way to tell the selection range in iOS?
-        info["textBeforeCursor"] = textBeforeCursor;
-        info["textAfterCursor"] = textAfterCursor;
+        let info = NSMutableDictionary()
+        info["selectionStart"] = charPosition
+        info["selectionEnd"] = charPosition // XXX: No way to tell the selection range in iOS?
+        info["textBeforeCursor"] = textBeforeCursor
+        info["textAfterCursor"] = textAfterCursor
 
         return info;
     }

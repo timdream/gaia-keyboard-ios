@@ -84,8 +84,6 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
                 data: try NSJSONSerialization.dataWithJSONObject(obj, options: NSJSONWritingOptions(rawValue: 0)),
                 encoding: NSUTF8StringEncoding) as! String;
 
-            print(jsonString)
-
             self.appViewDelegate.webView?.evaluateJavaScript(
                 "window.postMessage(\(jsonString) ,'*');",
                 completionHandler: nil);
