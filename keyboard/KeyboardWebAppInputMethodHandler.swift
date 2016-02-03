@@ -106,20 +106,50 @@ class KeyboardWebAppInputMethodHandler {
 
             self.apiControllerDelegate.postMessage(message);
 
+        case "keydown":
+            let dict = args[0] as! NSDictionary
+            let key = dict["key"] as! String
+            switch (key) {
+              case "Backspace":
+                self.handleInput(TextMutationTask.Backspace);
+              case "Enter":
+                self.handleInput(TextMutationTask.Return);
+              default:
+                self.handleInput(TextMutationTask.Append, str: key);
+            }
+
+            self.updateSelectionContext();
+
+            message["result"] = "";
+            self.apiControllerDelegate.postMessage(message);
+
         case "sendKey":
-            let charCode = args[1] as! Int;
-            if charCode != 0 {
-                self.handleInput(
-                    TextMutationTask.Append,
-                    str: String(UnicodeScalar(charCode)));
-            } else {
-                switch (args[0] as! Int) {
-                case 0x08:
+            let dict = args[0] as! NSDictionary
+            if ((dict["key"]) != nil) {
+                let key = dict["key"] as! String
+                switch (key) {
+                case "Backspace":
                     self.handleInput(TextMutationTask.Backspace);
-                case 0x0D:
+                case "Enter":
                     self.handleInput(TextMutationTask.Return);
                 default:
-                    print("KeyboardWebAppInputMethodHandler: Unhandled keyCode \(args[0])");
+                    self.handleInput(TextMutationTask.Append, str: key);
+                }
+            } else {
+                let charCode = args[1] as! Int;
+                if charCode != 0 {
+                    self.handleInput(
+                        TextMutationTask.Append,
+                        str: String(UnicodeScalar(charCode)));
+                } else {
+                    switch (args[0] as! Int) {
+                    case 0x08:
+                        self.handleInput(TextMutationTask.Backspace);
+                    case 0x0D:
+                        self.handleInput(TextMutationTask.Return);
+                    default:
+                        print("KeyboardWebAppInputMethodHandler: Unhandled keyCode \(args[0])");
+                    }
                 }
             }
 
@@ -127,6 +157,11 @@ class KeyboardWebAppInputMethodHandler {
 
             message["result"] = "";
             self.apiControllerDelegate.postMessage(message);
+
+        case "keyup":
+          // Do nothing
+          message["result"] = "";
+          self.apiControllerDelegate.postMessage(message);
 
         case "replaceSurroundingText":
             self.handleInput(

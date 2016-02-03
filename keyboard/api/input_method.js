@@ -271,6 +271,14 @@
     return this._sendMessage(
       'deleteSurroundingText', [].slice.call(arguments));
   };
+  InputContext.prototype.keydown = function() {
+    return this._sendMessage(
+      'sendKey', [].slice.call(arguments));
+  };
+  InputContext.prototype.keyup = function() {
+    return this._sendMessage(
+      'sendKey', [].slice.call(arguments));
+  };
   InputContext.prototype.sendKey = function() {
     return this._sendMessage(
       'sendKey', [].slice.call(arguments));
