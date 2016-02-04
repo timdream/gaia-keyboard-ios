@@ -18,7 +18,7 @@ class KeyboardViewController: UIInputViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
-        if (self.view!.frame.size.width == 0 || self.view!.frame.size.height == 0) {
+        if (self.inputView!.frame.size.width == 0 || self.inputView!.frame.size.height == 0) {
             return
         }
         self.heightConstraint.constant = self.keyboardAppView!.expendedHeight
@@ -37,10 +37,10 @@ class KeyboardViewController: UIInputViewController {
         self.keyboardAppView.kbDelegate = self
         self.keyboardAppView.load()
 
-        self.view!.addSubview(self.keyboardAppView.webView)
+        self.inputView!.addSubview(self.keyboardAppView.webView)
 
         self.heightConstraint =
-            NSLayoutConstraint(item: self.view!,
+            NSLayoutConstraint(item: self.inputView!,
                 attribute: NSLayoutAttribute.Height,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: nil,
@@ -52,8 +52,8 @@ class KeyboardViewController: UIInputViewController {
         // See http://stackoverflow.com/a/25795758/519617
         self.heightConstraint.priority = UILayoutPriority(999);
 
-        self.view!.addConstraint(self.heightConstraint);
-        self.view!.translatesAutoresizingMaskIntoConstraints = false;
+        self.inputView!.addConstraint(self.heightConstraint);
+        self.inputView!.translatesAutoresizingMaskIntoConstraints = false;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -68,11 +68,11 @@ class KeyboardViewController: UIInputViewController {
 
 
         let appViewLeftSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Left, relatedBy: .Equal, toItem: self.inputView, attribute: .Left, multiplier: 1.0, constant: 0.0)
         let appViewRightSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Right, relatedBy: .Equal, toItem: self.inputView, attribute: .Right, multiplier: 1.0, constant: 0.0)
         let appViewBottomSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Bottom, relatedBy: .Equal, toItem: self.inputView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         self.view.addConstraints([
             appViewLeftSideConstraint, appViewRightSideConstraint, appViewBottomSideConstraint])
     }
