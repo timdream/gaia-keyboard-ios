@@ -35,11 +35,9 @@ class KeyboardViewController: UIInputViewController {
 
         self.keyboardAppView = KeyboardWebAppView()
         self.keyboardAppView.kbDelegate = self
-        self.keyboardAppView.sizeToFit()
-        self.keyboardAppView.translatesAutoresizingMaskIntoConstraints = false
         self.keyboardAppView.load()
 
-        self.view!.addSubview(self.keyboardAppView)
+        self.view!.addSubview(self.keyboardAppView.webView)
 
         self.heightConstraint =
             NSLayoutConstraint(item: self.view!,
@@ -70,14 +68,13 @@ class KeyboardViewController: UIInputViewController {
 
 
         let appViewLeftSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
         let appViewRightSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0.0)
         let appViewBottomSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([appViewLeftSideConstraint,
-            appViewRightSideConstraint,
-            appViewBottomSideConstraint])
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        self.view.addConstraints([
+            appViewLeftSideConstraint, appViewRightSideConstraint, appViewBottomSideConstraint])
     }
 
     override func viewWillDisappear(animated: Bool) {
