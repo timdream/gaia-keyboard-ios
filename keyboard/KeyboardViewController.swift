@@ -18,38 +18,44 @@ class KeyboardViewController: UIInputViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
-        self.inputView!.removeConstraint(self.heightConstraint)
+        if (self.view!.frame.size.width == 0 || self.view!.frame.size.height == 0) {
+            return
+        }
         self.heightConstraint.constant = self.keyboardAppView!.expendedHeight
-        self.inputView!.addConstraint(self.heightConstraint)
     }
 
+/*
     override func loadView() {
-        // XXX for some reason, UIInputViewController does not appear to follow
-        // the normal UIViewController lifecycle, so we run into this loadView()
-        // function every time.
+        super.loadView();
+    }
+*/
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         self.keyboardAppView = KeyboardWebAppView()
-        self.keyboardAppView!.kbDelegate = self
-        self.inputView = self.keyboardAppView
-        self.keyboardAppView!.load()
+        self.keyboardAppView.kbDelegate = self
+        self.keyboardAppView.sizeToFit()
+        self.keyboardAppView.translatesAutoresizingMaskIntoConstraints = false
+        self.keyboardAppView.load()
+
+        self.view!.addSubview(self.keyboardAppView)
 
         self.heightConstraint =
-            NSLayoutConstraint(item: self.view,
+            NSLayoutConstraint(item: self.view!,
                 attribute: NSLayoutAttribute.Height,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: nil,
                 attribute: NSLayoutAttribute.NotAnAttribute,
-                multiplier:0.0,
+                multiplier: 1.0,
                 constant: self.keyboardAppView!.expendedHeight)
 
         // We need to bump the pirority of our constraint here.
         // See http://stackoverflow.com/a/25795758/519617
-        self.heightConstraint.priority = 999;
+        self.heightConstraint.priority = UILayoutPriority(999);
 
-        self.inputView!.addConstraint(self.heightConstraint);
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        self.view!.addConstraint(self.heightConstraint);
+        self.view!.translatesAutoresizingMaskIntoConstraints = false;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -61,6 +67,17 @@ class KeyboardViewController: UIInputViewController {
 
         self.keyboardAppView.getFocus();
         self.isManagingFocus = true;
+
+
+        let appViewLeftSideConstraint =
+            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+        let appViewRightSideConstraint =
+            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+        let appViewBottomSideConstraint =
+            NSLayoutConstraint(item: self.keyboardAppView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+        self.view.addConstraints([appViewLeftSideConstraint,
+            appViewRightSideConstraint,
+            appViewBottomSideConstraint])
     }
 
     override func viewWillDisappear(animated: Bool) {

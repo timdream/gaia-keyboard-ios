@@ -10,11 +10,12 @@ import UIKit
 import WebKit
 
 class KeyboardWebAppView : UIInputView {
-    var webView: WKWebView!
-    var expendedHeight: CGFloat = 400
+    var expendedHeight: CGFloat = 413
 
     var kbDelegate: KeyboardViewController!
     var apiController: KeyboardWebAppAPIController!
+
+    var webView: WKWebView!
 
     override init(frame: CGRect, inputViewStyle: UIInputViewStyle) {
         super.init(frame: frame, inputViewStyle: inputViewStyle)
@@ -32,7 +33,6 @@ class KeyboardWebAppView : UIInputView {
         }
 
         let screenSize = UIScreen.mainScreen().bounds.size;
-
         let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
                             width: screenSize.width, height: screenSize.height)
 
@@ -40,6 +40,8 @@ class KeyboardWebAppView : UIInputView {
         let configuration = self.apiController.configuration
 
         self.webView = WKWebView(frame: rect, configuration: configuration);
+        self.webView.sizeToFit()
+        self.translatesAutoresizingMaskIntoConstraints = false;
         self.addSubview(self.webView)
     }
 
@@ -79,6 +81,16 @@ class KeyboardWebAppView : UIInputView {
 
     func updateTextInput() {
         self.apiController.inputMethodHandler.updateSelectionContext(false);
+    }
+
+    func updateHeight(height: CGFloat) {
+        self.expendedHeight = height;
+        self.kbDelegate.heightConstraint.constant = height;
+
+        let screenSize = UIScreen.mainScreen().bounds.size;
+        let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
+            width: screenSize.width, height: screenSize.height)
+        self.webView.frame = rect
     }
 
     override func updateConstraints() {

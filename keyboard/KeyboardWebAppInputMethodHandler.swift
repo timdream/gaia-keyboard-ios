@@ -124,9 +124,9 @@ class KeyboardWebAppInputMethodHandler {
             self.apiControllerDelegate.postMessage(message);
 
         case "sendKey":
-            let dict = args[0] as! NSDictionary
-            if ((dict["key"]) != nil) {
-                let key = dict["key"] as! String
+            let dict = args[0] as? NSDictionary
+            if (dict != nil) {
+                let key = dict!["key"] as! String
                 switch (key) {
                 case "Backspace":
                     self.handleInput(TextMutationTask.Backspace);

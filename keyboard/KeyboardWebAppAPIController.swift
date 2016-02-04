@@ -69,9 +69,7 @@ class KeyboardWebAppAPIController: NSObject, WKScriptMessageHandler {
 
             case "resizeTo":
                 let args = data["args"] as! NSArray
-                self.appViewDelegate.expendedHeight = args[1] as! CGFloat;
-                self.appViewDelegate.updateConstraints();
-                self.appViewDelegate.kbDelegate.updateViewConstraints();
+                self.appViewDelegate.updateHeight(args[1] as! CGFloat)
 
             default:
                 fatalError("KeyboardWebAppAPIController: Undefined message from api: \(api)");
