@@ -8,11 +8,11 @@ Related project: [Gaia Keyboard Demo](https://github.com/timdream/gaia-keyboard-
 
 1. Clone the Gaia repo separately into `gaia` sub-directory.
 
-    git clone https://github.com/mozilla-b2g/gaia.git
+        git clone https://github.com/mozilla-b2g/gaia.git
 
 2. Pull the necessary files into the Xcode project
 
-    make -C keyboard
+        make -C keyboard
 
 3. Launch Xcode and build the code.
 
