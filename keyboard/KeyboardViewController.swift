@@ -14,6 +14,7 @@ class KeyboardViewController: UIInputViewController {
 
     var isManagingFocus: Bool = false
     var heightConstraint: NSLayoutConstraint!
+    var appViewTopSideConstraint: NSLayoutConstraint!
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -22,6 +23,7 @@ class KeyboardViewController: UIInputViewController {
             return
         }
         self.heightConstraint.constant = self.keyboardAppView!.expendedHeight
+        self.appViewTopSideConstraint.constant = -self.keyboardAppView!.expendedHeight
     }
 
 /*
@@ -71,10 +73,10 @@ class KeyboardViewController: UIInputViewController {
             NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Left, relatedBy: .Equal, toItem: self.inputView, attribute: .Left, multiplier: 1.0, constant: 0.0)
         let appViewRightSideConstraint =
             NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Right, relatedBy: .Equal, toItem: self.inputView, attribute: .Right, multiplier: 1.0, constant: 0.0)
-        let appViewBottomSideConstraint =
-            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Bottom, relatedBy: .Equal, toItem: self.inputView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        self.appViewTopSideConstraint =
+            NSLayoutConstraint(item: self.keyboardAppView.webView, attribute: .Top, relatedBy: .Equal, toItem: self.inputView, attribute: .Top, multiplier: 1.0, constant: -self.keyboardAppView!.expendedHeight)
         self.view.addConstraints([
-            appViewLeftSideConstraint, appViewRightSideConstraint, appViewBottomSideConstraint])
+            appViewLeftSideConstraint, appViewRightSideConstraint, self.appViewTopSideConstraint])
     }
 
     override func viewWillDisappear(animated: Bool) {

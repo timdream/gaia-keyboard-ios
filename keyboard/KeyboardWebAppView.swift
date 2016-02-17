@@ -33,7 +33,7 @@ class KeyboardWebAppView : UIInputView {
         }
 
         let screenSize = UIScreen.mainScreen().bounds.size;
-        let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
+        let rect = CGRect(x: 0, y: 0,//-screenSize.height + self.expendedHeight,
                             width: screenSize.width, height: screenSize.height)
 
         self.apiController = KeyboardWebAppAPIController()
@@ -86,11 +86,12 @@ class KeyboardWebAppView : UIInputView {
     func updateHeight(height: CGFloat) {
         self.expendedHeight = height;
         self.kbDelegate.heightConstraint.constant = height;
+        self.kbDelegate.appViewTopSideConstraint.constant = -height;
 
-        let screenSize = UIScreen.mainScreen().bounds.size;
+/*        let screenSize = UIScreen.mainScreen().bounds.size;
         let rect = CGRect(x: 0, y: -screenSize.height + self.expendedHeight,
             width: screenSize.width, height: screenSize.height)
-        self.webView.frame = rect
+        self.webView.frame = rect*/
     }
 
     override func updateConstraints() {
