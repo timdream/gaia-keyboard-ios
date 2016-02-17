@@ -1,11 +1,25 @@
 'use strict';
 
 (function bootstrapAPIs(exports) {
+  // XXX We don't know how to set this from Swift world
+  window.location.hash = '#en';
+
   navigator.mozSettings = new NavigatorMozSettings();
   navigator.mozSettings.start();
 
   navigator.mozInputMethod = new InputMethod();
   navigator.mozInputMethod.start();
+
+  window.addEventListener('load', function addCSS() {
+    window.removeEventListener('load', addCSS);
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../api/api.css';
+
+    document.documentElement.firstElementChild.append(link);
+  });
 
   window.resizeTo = function(width, height) {
     webkit.messageHandlers.api.postMessage({
